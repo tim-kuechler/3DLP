@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="The 3D-anchored Light Probe benchmark evaluates whether generative image editing models reproduce real-world lighting changes using high-fidelity HDR captures and region-level light transport analysis.">
+  <meta name="keywords" content="3DLP, image editing, light transport, benchmark">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>3DLP: Do Image Editing Models Understand Lighting?</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💡</text></svg>">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container publication-title-container">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">Do Image Editing Models Understand Lighting?</h1>
+          <div class="title-answer-strip" id="title-answer-strip" role="button" tabindex="0" aria-label="Reveal SIE heatmaps for scene 115">
+            <div class="title-answer-grid">
+              <figure class="title-answer-item">
+                <figcaption class="title-answer-verdict" data-verdict="No!">Maybe?</figcaption>
+                <img src="static/videos/comparison/00115_fingerhut_living_room_view_2_images_0/ai_generated/image_only/flux_2_dev/00115_fingerhut_living_room_view_2_images_0_flux_2_dev_on.jpg"
+                     data-sie-src="static/videos/comparison/00115_fingerhut_living_room_view_2_images_0/metrics/turn_on/parts/image_only/models/flux_2_dev/00115_fingerhut_living_room_view_2_images_0_turn_on_03_02_standardized_ratio_diff.jpg"
+                     alt="Scene 115 FLUX.2 Dev RGB prediction">
+                <figcaption class="title-answer-model">FLUX.2 Dev</figcaption>
+              </figure>
+              <figure class="title-answer-item">
+                <figcaption class="title-answer-verdict" data-verdict="No!">Maybe?</figcaption>
+                <img src="static/videos/comparison/00115_fingerhut_living_room_view_2_images_0/ai_generated/image_only/flux_2_max/00115_fingerhut_living_room_view_2_images_0_flux_2_max_on.jpg"
+                     data-sie-src="static/videos/comparison/00115_fingerhut_living_room_view_2_images_0/metrics/turn_on/parts/image_only/models/flux_2_max/00115_fingerhut_living_room_view_2_images_0_turn_on_04_02_standardized_ratio_diff.jpg"
+                     alt="Scene 115 FLUX.2 Max RGB prediction">
+                <figcaption class="title-answer-model">FLUX.2 Max</figcaption>
+              </figure>
+              <figure class="title-answer-item">
+                <figcaption class="title-answer-verdict" data-verdict="No!">Maybe?</figcaption>
+                <img src="static/videos/comparison/00115_fingerhut_living_room_view_2_images_0/ai_generated/image_only/gpt_image_1.5/00115_fingerhut_living_room_view_2_images_0_gpt_image_1.5_on.jpg"
+                     data-sie-src="static/videos/comparison/00115_fingerhut_living_room_view_2_images_0/metrics/turn_on/parts/image_only/models/gpt_image_1.5/00115_fingerhut_living_room_view_2_images_0_turn_on_01_02_standardized_ratio_diff.jpg"
+                     alt="Scene 115 GPT-Image 1.5 RGB prediction">
+                <figcaption class="title-answer-model">GPT-Image 1.5</figcaption>
+              </figure>
+              <figure class="title-answer-item">
+                <figcaption class="title-answer-verdict" data-verdict="Yes!">Maybe?</figcaption>
+                <img src="static/videos/comparison/00115_fingerhut_living_room_view_2_images_0/ai_generated/image_only/nano_banana_2/00115_fingerhut_living_room_view_2_images_0_nano_banana_2_on.jpg"
+                     data-sie-src="static/videos/comparison/00115_fingerhut_living_room_view_2_images_0/metrics/turn_on/parts/image_only/models/nano_banana_2/00115_fingerhut_living_room_view_2_images_0_turn_on_05_02_standardized_ratio_diff.jpg"
+                     alt="Scene 115 Nano Banana 2 RGB prediction">
+                <figcaption class="title-answer-model">Nano Banana 2</figcaption>
+              </figure>
+              <figure class="title-answer-item">
+                <figcaption class="title-answer-verdict" data-verdict="Yes!">Maybe?</figcaption>
+                <img src="static/videos/comparison/00115_fingerhut_living_room_view_2_images_0/ai_generated/image_only/nano_banana_pro/00115_fingerhut_living_room_view_2_images_0_nano_banana_pro_on.jpg"
+                     data-sie-src="static/videos/comparison/00115_fingerhut_living_room_view_2_images_0/metrics/turn_on/parts/image_only/models/nano_banana_pro/00115_fingerhut_living_room_view_2_images_0_turn_on_06_02_standardized_ratio_diff.jpg"
+                     alt="Scene 115 Nano Banana Pro RGB prediction">
+                <figcaption class="title-answer-model">Nano Banana Pro</figcaption>
+              </figure>
+              <figure class="title-answer-item">
+                <figcaption class="title-answer-verdict" data-verdict="Yes!">Maybe?</figcaption>
+                <img src="static/videos/comparison/00115_fingerhut_living_room_view_2_images_0/ai_generated/image_only/qwen_image_edit_2511/00115_fingerhut_living_room_view_2_images_0_qwen_image_edit_2511_on.jpg"
+                     data-sie-src="static/videos/comparison/00115_fingerhut_living_room_view_2_images_0/metrics/turn_on/parts/image_only/models/qwen_image_edit_2511/00115_fingerhut_living_room_view_2_images_0_turn_on_08_02_standardized_ratio_diff.jpg"
+                     alt="Scene 115 Qwen Image Edit 2511 RGB prediction">
+                <figcaption class="title-answer-model">Qwen Image Edit 2511</figcaption>
+              </figure>
+            </div>
+            <div class="title-answer-reveal-hint title-answer-hint-reveal">
+              <span class="icon"><i class="fas fa-mouse-pointer"></i></span>
+              <span>Click to reveal</span>
+            </div>
+            <div class="title-answer-reveal-hint title-answer-hint-reset">
+              <span class="icon"><i class="fas fa-undo"></i></span>
+              <span>Click to reset</span>
+            </div>
+          </div>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?user=6Z_CcEsAAAAJ&hl=de">Tim Küchler</a><sup>*1,3</sup>,</span>
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?user=fV6PWhQAAAAJ&hl=de">Johann-Friedrich Feiden</a><sup>*1</sup>,</span>
+            <span class="author-block">
+              <a href="https://niessnerlab.org/members/matthias_niessner/profile.html">Matthias Nießner</a><sup>2</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://hci.iwr.uni-heidelberg.de/vislearn/people/carsten-rother/">Carsten Rother</a><sup>1</sup>,
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>Heidelberg University,</span>
+            <span class="author-block"><sup>2</sup>Technical University of Munich,</span>
+            <span class="author-block"><sup>3</sup>Zuse School ELIZA</span>
+          </div>
+          <div class="is-size-6 publication-authors">
+            <span class="author-block"><sup>*</sup>Equal contribution</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="https://arxiv.org/pdf/2606.26738"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2606.26738"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <!-- Video Link. -->
+              <span class="link-block">
+                <a href="https://www.youtube.com/watch?v=sWxcv2XGi6M"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span>
+              <!-- Dataset Link. -->
+              <span class="link-block">
+                <a href="TODO"
+                   class="external-link button is-normal is-rounded is-dark"
+                   disabled style="pointer-events: none; opacity: 0.5;" title="Coming soon">
+                  <span class="icon">
+                    <img class="hf-icon" src="./static/images/huggingface_logo-noborder.svg" alt="Hugging Face logo">
+                  </span>
+                  <span>Dataset (Coming Soon)</span>
+                </a>
+              </span>
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/tim-kuechler/3DLP/tree/main"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                </a>
+              </span>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== ABSTRACT ==================== -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            While recent advancements in generative image editing models have achieved stunning visual fidelity, it remains an open question whether these systems possess an intrinsic knowledge of real-world lighting.
+            Existing benchmarks typically evaluate high-level plausibility of perceptual light transport on curated internet imagery, using VLMs or human judgement, or they rely on synthetically generated datasets.
+            In this work, we introduce the 3D-anchored Light Probe (3DLP) benchmark, for which we have captured a new high-fidelity HDR dataset of real-world lighting changes.
+            The dataset consists of 1K image pairs of diverse indoor scenery in which light probes are physically turned on and off.
+            To allow for a granular performance analysis, we annotated specific image regions such as cast shadows or metallic surfaces.
+            With this data, we evaluate a range of state-of-the-art image editing models by measuring how well their light probe edits align with reality.
+            The evaluation uses two new scores to compensate for AI-generated photographic effects, such as adjusted white balance.
+            Our results show that the overall performance of models differs considerably, with differences slightly less pronounced for specular highlights.
+            The best image editing models are remarkably consistent with real-world physics, however, they still leave room for improvement.
+            We observe that image regions that receive less light from the light probe are more prone to errors for all models.
+            Furthermore, building on their success in evaluating macroscopic lighting plausibility, we test VLMs on our task but find that they are unsuitable for pixel-level light transport analysis.
+            We will make the benchmark, together with the real-world dataset, publicly available to encourage future research on this topic.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== TEASER 2 VIDEO ==================== -->
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <div class="dataset-teaser-frame">
+        <video id="dataset-teaser" class="dataset-teaser-video" autoplay muted loop playsinline height="100%">
+          <source src="./static/videos/dataset.mp4"
+                  type="video/mp4">
+        </video>
+        <div class="dataset-video-lens" aria-hidden="true">
+          <video class="dataset-teaser-zoom-video" autoplay muted loop playsinline preload="auto">
+            <source src="./static/videos/dataset.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <button class="dataset-video-toggle" type="button" aria-label="Pause video" title="Pause video">
+          <span class="icon dataset-video-icon dataset-video-pause"><i class="fas fa-pause"></i></span>
+          <span class="icon dataset-video-icon dataset-video-play"><i class="fas fa-play"></i></span>
+        </button>
+      </div>
+      <h2 class="subtitle has-text-centered">
+        Our 3DLP dataset contains 1K image pairs of indoor scenes, capturing real-world lighting changes with high-fidelity HDR imagery.
+      </h2>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== YOUTUBE VIDEO ==================== -->
+<section class="section" style="padding-top: 0;">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Video</h2>
+        <div class="publication-video">
+          <iframe src="https://www.youtube.com/embed/sWxcv2XGi6M"
+                  title="YouTube video player" frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== METHOD / PIPELINE ==================== -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">3DLP Pipeline</h2>
+      </div>
+    </div>
+    <div class="columns is-centered has-text-centered">
+      <div class="column">
+        <img src="static/images/method_overview.png" alt="Method overview" style="width: 100%; max-width: 1200px;">
+      </div>
+    </div>
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <div class="content has-text-justified">
+          <p>
+            Illustration of the <b>turn-on</b> task.
+          </p>
+          <p>
+            <b>Isolating light transport.</b>
+            Starting from a real image with the light probe turned off, <var>I</var><sup>off</sup><sub>R</sub>, the editing model is asked to turn on the visible bulb and produce <var>I</var><sup>on</sup><sub>AI</sub>.
+            We compare this prediction to the real capture with the bulb turned on, <var>I</var><sup>on</sup><sub>R</sub>, by dividing each on-image by the shared off-image.
+            The resulting ratio images, <var>E</var><sup>on</sup><sub>AI</sub> and <var>E</var><sup>on</sup><sub>R</sub>, isolate the illumination change caused by the bulb while reducing the influence of scene texture and appearance.
+          </p>
+          <p>
+            <b>Evaluating the lighting edit.</b>
+            We evaluate the ratio images with two complementary errors.
+            The Standardised Intensity Error (SIE) measures where the predicted light energy contribution is too weak or too strong, while the Low-Frequency Error (LFE) compares gradients and focuses on effects such as light falloff and lambertian shading.
+            Invalid regions such as clipped pixels, low-signal areas, and window labels are masked out.
+            Both metrics are designed to be robust to photographic changes introduced by the editing model, including exposure shifts and differences in the rendered bulb color or brightness.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 3DLP BENCHMARK ==================== -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">3DLP Benchmark</h2>
+        <p class="benchmark-intro">
+          This table reports results on our 3DLP benchmark, evaluating how accurately image editing models reproduce real-world lighting changes when a light probe is turned on or off.
+        </p>
+        <img class="benchmark-table-image" src="static/images/3dlp_benchmark_table.svg" alt="3DLP benchmark results table comparing image editing models on SIE, LFE, and average rank.">
+        <p class="benchmark-results-summary">
+          Lower scores indicate closer agreement with the real lighting change. Nano Banana Pro achieves the best overall rank and leads on all reported SIE/LFE scores, while Nano Banana 2 follows closely. Among open-source models, Qwen-Image-Edit performs strongest, and the larger spread in SIE compared to LFE suggests that models differ more in reproduced light intensity than in low-frequency shading structure.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== COMPARISONS ==================== -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Comparisons</h2>
+        <p class="comparison-metric-note">
+          SIE/LFE metric images: <span class="metric-too-high">red</span> = too high, <span class="metric-too-low">blue</span> = too low compared to the real reference.
+        </p>
+      </div>
+    </div>
+    <div class="comparison-viewer" id="comparison-viewer">
+      <div class="comparison-controls-row">
+        <div class="tabs is-centered is-toggle is-toggle-rounded comparison-tabs" aria-label="Comparison scene selection">
+          <ul id="comparison-scene-tabs"></ul>
+        </div>
+        <div class="tabs is-centered is-toggle is-toggle-rounded comparison-tabs" aria-label="Comparison image type selection">
+          <ul id="comparison-view-tabs"></ul>
+        </div>
+        <div class="tabs is-centered is-toggle is-toggle-rounded comparison-tabs" aria-label="Comparison turn selection">
+          <ul id="comparison-turn-tabs"></ul>
+        </div>
+      </div>
+      <div class="comparison-reference-grid" id="comparison-reference-grid"></div>
+      <div class="comparison-model-grid" id="comparison-model-grid"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== BIBTEX ==================== -->
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@misc{küchler2026imageeditingmodelsunderstand,
+      title={Do Image Editing Models Understand Lighting?}, 
+      author={Tim Küchler and Johann-Friedrich Feiden and Matthias Nießner and Carsten Rother},
+      year={2026},
+      eprint={2606.26738},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/2606.26738}
+}</code></pre>
+  </div>
+</section>
+
+
+<!-- ==================== FOOTER ==================== -->
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <a class="icon-link"  href="https://arxiv.org/pdf/2606.26738">
+        <i class="fas fa-file-pdf"></i>
+      </a>
+      <a class="icon-link" href="https://github.com/tim-kuechler/3DLP/tree/main">
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            Website source code borrowed from the
+            <a href="https://github.com/nerfies/nerfies.github.io">nerfies webpage</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2048 720" role="img" aria-labelledby="title desc">
+  <title id="title">3DLP Benchmark Results Table</title>
+  <desc id="desc">Benchmark table comparing image editing models on SIE, LFE, and average rank for turning light on and off.</desc>
+  <rect width="2048" height="720" fill="#ffffff"/>
+  <g fill="#000000" font-family="Times New Roman, Times, serif">
+    <line x1="16" y1="18" x2="2032" y2="18" stroke="#000000" stroke-width="5"/>
+    <line x1="581" y1="116" x2="1060" y2="116" stroke="#000000" stroke-width="2"/>
+    <line x1="1120" y1="116" x2="1607" y2="116" stroke="#000000" stroke-width="2"/>
+    <line x1="16" y1="212" x2="2032" y2="212" stroke="#000000" stroke-width="3"/>
+    <line x1="16" y1="660" x2="2032" y2="660" stroke="#000000" stroke-width="5"/>
+
+    <text x="820" y="86" font-size="64" font-weight="700" text-anchor="middle">Turning Light On</text>
+    <text x="1365" y="86" font-size="64" font-weight="700" text-anchor="middle">Turning Light Off</text>
+
+    <text x="52" y="182" font-size="64" font-weight="700">Model</text>
+    <text x="590" y="182" font-size="64" font-weight="700">SIE &#8595;</text>
+    <text x="846" y="182" font-size="64" font-weight="700">LFE &#8595;</text>
+    <text x="1125" y="182" font-size="64" font-weight="700">SIE &#8595;</text>
+    <text x="1372" y="182" font-size="64" font-weight="700">LFE &#8595;</text>
+    <text x="1675" y="182" font-size="64" font-weight="700">Avg. Rank &#8595;</text>
+
+    <text x="52" y="282" font-size="60">Nano Banana Pro<tspan baseline-shift="super" font-size="38">*</tspan></text>
+    <text x="590" y="282" font-size="60" font-weight="700">0.813</text>
+    <text x="862" y="282" font-size="60" font-weight="700">1.641</text>
+    <text x="1130" y="282" font-size="60" font-weight="700">0.769</text>
+    <text x="1402" y="282" font-size="60" font-weight="700">1.651</text>
+    <text x="1798" y="282" font-size="60" font-weight="700">1.0</text>
+
+    <text x="52" y="352" font-size="60">Nano Banana 2<tspan baseline-shift="super" font-size="38">*</tspan></text>
+    <text x="590" y="352" font-size="60">0.882</text>
+    <line x1="590" y1="360" x2="728" y2="360" stroke="#000000" stroke-width="2"/>
+    <text x="862" y="352" font-size="60" font-weight="700">1.641</text>
+    <text x="1130" y="352" font-size="60">0.871</text>
+    <line x1="1130" y1="360" x2="1268" y2="360" stroke="#000000" stroke-width="2"/>
+    <text x="1402" y="352" font-size="60">1.652</text>
+    <line x1="1402" y1="360" x2="1540" y2="360" stroke="#000000" stroke-width="2"/>
+    <text x="1798" y="352" font-size="60">1.8</text>
+    <line x1="1798" y1="360" x2="1872" y2="360" stroke="#000000" stroke-width="2"/>
+
+    <text x="52" y="422" font-size="60">Qwen-Img.-Edit<tspan baseline-shift="super" font-size="38">&#8224;</tspan></text>
+    <text x="590" y="422" font-size="60">1.239</text>
+    <text x="862" y="422" font-size="60">1.772</text>
+    <text x="1130" y="422" font-size="60">0.982</text>
+    <text x="1402" y="422" font-size="60">1.656</text>
+    <text x="1798" y="422" font-size="60">3.3</text>
+
+    <text x="52" y="492" font-size="60">Flux 2 Max<tspan baseline-shift="super" font-size="38">*</tspan></text>
+    <text x="590" y="492" font-size="60">1.571</text>
+    <text x="862" y="492" font-size="60">1.710</text>
+    <text x="1130" y="492" font-size="60">1.303</text>
+    <text x="1402" y="492" font-size="60">1.691</text>
+    <text x="1798" y="492" font-size="60">3.8</text>
+
+    <text x="52" y="562" font-size="60">Flux 2 Dev<tspan baseline-shift="super" font-size="38">&#8224;</tspan></text>
+    <text x="590" y="562" font-size="60">1.747</text>
+    <text x="862" y="562" font-size="60">1.775</text>
+    <text x="1130" y="562" font-size="60">2.136</text>
+    <text x="1402" y="562" font-size="60">1.797</text>
+    <text x="1798" y="562" font-size="60">5.5</text>
+
+    <text x="52" y="632" font-size="60">GPT Img. 1.5<tspan baseline-shift="super" font-size="38">*</tspan></text>
+    <text x="590" y="632" font-size="60">2.336</text>
+    <text x="862" y="632" font-size="60">1.933</text>
+    <text x="1130" y="632" font-size="60">1.887</text>
+    <text x="1402" y="632" font-size="60">1.734</text>
+    <text x="1798" y="632" font-size="60">5.5</text>
+
+    <text x="1024" y="712" font-size="54" text-anchor="middle">*Commercial model. &#8224;Open-source model.</text>
+  </g>
+</svg>
