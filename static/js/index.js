@@ -1,25 +1,7 @@
 window.HELP_IMPROVE_VIDEOJS = false;
 
-var INTERP_BASE = "./static/interpolation/stacked";
-var NUM_INTERP_FRAMES = 240;
-
-var interp_images = [];
-function preloadInterpolationImages() {
-  for (var i = 0; i < NUM_INTERP_FRAMES; i++) {
-    var path = INTERP_BASE + '/' + String(i).padStart(6, '0') + '.jpg';
-    interp_images[i] = new Image();
-    interp_images[i].src = path;
-  }
-}
-
-function setInterpolationImage(i) {
-  var image = interp_images[i];
-  image.ondragstart = function() { return false; };
-  image.oncontextmenu = function() { return false; };
-  $('#interpolation-image-wrapper').empty().append(image);
-}
-
 var COMPARISON_BASE = "static/videos/comparison";
+var COMPARISON_PREVIEW_WIDTHS = [360, 720, 1080];
 var COMPARISON_SCENES = [
   {
     label: "1",
@@ -107,6 +89,14 @@ function comparisonImagePath(scene, turnKey, model, view) {
     : comparisonMetricPath(scene, turnKey, model, view);
 }
 
+function setComparisonImageSource(image, originalPath) {
+  var base = originalPath.replace(/\.jpg$/, "");
+  image.srcset = COMPARISON_PREVIEW_WIDTHS.map(function(width) {
+    return base + "-" + width + ".webp " + width + "w";
+  }).join(", ");
+  image.src = base + "-720.webp";
+}
+
 function formatComparisonMetric(value) {
   return Number.isFinite(value) ? value.toFixed(3) : "-";
 }
@@ -123,15 +113,20 @@ function createComparisonTab(label, isActive, onClick) {
   return item;
 }
 
-function createComparisonFigure(src, caption, alt, metrics) {
+function createComparisonFigure(src, caption, alt, metrics, isReference) {
   var figure = document.createElement("figure");
   figure.className = "comparison-figure";
 
   var image = document.createElement("img");
-  image.src = src;
   image.alt = alt;
   image.loading = "lazy";
   image.decoding = "async";
+  image.width = 720;
+  image.height = 480;
+  image.sizes = isReference
+    ? "(max-width: 768px) calc(100vw - 48px), 350px"
+    : "(max-width: 768px) calc(100vw - 48px), (max-width: 1008px) calc((100vw - 88px) / 3), 307px";
+  setComparisonImageSource(image, src);
 
   var figcaption = document.createElement("figcaption");
   figcaption.textContent = caption;
@@ -206,12 +201,16 @@ function initComparisonGallery() {
       createComparisonFigure(
         comparisonGroundTruthPath(scene, comparisonInputState(activeTurnKey)),
         "Input",
-        scene.title + " input image"
+        scene.title + " input image",
+        null,
+        true
       ),
       createComparisonFigure(
         comparisonGroundTruthPath(scene, comparisonTargetState(activeTurnKey)),
         "GT Output",
-        scene.title + " ground-truth output image"
+        scene.title + " ground-truth output image",
+        null,
+        true
       )
     );
 
@@ -239,12 +238,14 @@ function initTitleAnswerStrip() {
   if (!strip) return;
 
   strip.querySelectorAll("img[data-sie-src]").forEach(function(image) {
-    image.setAttribute("data-rgb-src", image.src);
+    if (!image.hasAttribute("data-rgb-src")) {
+      image.setAttribute("data-rgb-src", image.getAttribute("src"));
+    }
   });
 
   function setRevealed(isRevealed) {
     strip.querySelectorAll("img[data-sie-src]").forEach(function(image) {
-      image.src = image.getAttribute(isRevealed ? "data-sie-src" : "data-rgb-src");
+      setComparisonImageSource(image, image.getAttribute(isRevealed ? "data-sie-src" : "data-rgb-src"));
       image.alt = image.alt
         .replace(isRevealed ? "RGB prediction" : "SIE heatmap", isRevealed ? "SIE heatmap" : "RGB prediction");
     });
@@ -480,21 +481,6 @@ $(document).ready(function() {
     		console.log(state);
     	});
     }
-
-    /*var player = document.getElementById('interpolation-video');
-    player.addEventListener('loadedmetadata', function() {
-      $('#interpolation-slider').on('input', function(event) {
-        console.log(this.value, player.duration);
-        player.currentTime = player.duration / 100 * this.value;
-      })
-    }, false);*/
-    preloadInterpolationImages();
-
-    $('#interpolation-slider').on('input', function(event) {
-      setInterpolationImage(this.value);
-    });
-    setInterpolationImage(0);
-    $('#interpolation-slider').prop('max', NUM_INTERP_FRAMES - 1);
 
     bulmaSlider.attach();
 
