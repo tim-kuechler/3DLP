@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="520" height="112" viewBox="0 0 520 112" role="img" aria-labelledby="title description">
+  <title id="title">NeurIPS 26 ED Track Spotlight</title>
+  <desc id="description">A small stage light casts a warm, soft-edged beam onto the word Spotlight.</desc>
+  <defs>
+    <linearGradient id="beam" x1="407" y1="28" x2="357" y2="104" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#e8ae3c" stop-opacity=".30"/>
+      <stop offset=".62" stop-color="#e8ae3c" stop-opacity=".13"/>
+      <stop offset="1" stop-color="#e8ae3c" stop-opacity="0"/>
+    </linearGradient>
+    <radialGradient id="pool">
+      <stop stop-color="#e8ae3c" stop-opacity=".28"/>
+      <stop offset="1" stop-color="#e8ae3c" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="lettering" x1="318" y1="84" x2="406" y2="61" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#98600c"/>
+      <stop offset=".60" stop-color="#c88b20"/>
+      <stop offset="1" stop-color="#98600c"/>
+    </linearGradient>
+    <filter id="soft-beam" x="-25%" y="-25%" width="150%" height="150%">
+      <feGaussianBlur stdDeviation="3"/>
+    </filter>
+    <filter id="text-glow" x="-30%" y="-60%" width="160%" height="220%">
+      <feGaussianBlur stdDeviation="3.5"/>
+    </filter>
+  </defs>
+
+  <path d="M402 27 L412 32 L426 99 Q367 119 292 98 Z" fill="url(#beam)" filter="url(#soft-beam)"/>
+  <ellipse cx="363" cy="92" rx="73" ry="15" fill="url(#pool)"/>
+
+  <g font-family="Arial, Helvetica, sans-serif">
+    <text x="100" y="83" fill="#374151" font-size="20" font-weight="600">NeurIPS 26 ED Track</text>
+    <text x="311" y="83" fill="#e8ae3c" font-size="24" font-weight="700" opacity=".16" filter="url(#text-glow)" aria-hidden="true">Spotlight</text>
+    <text x="311" y="83" fill="url(#lettering)" font-size="24" font-weight="700">Spotlight</text>
+  </g>
+
+  <g transform="translate(410 17) rotate(120)">
+    <path d="M-7-11 V-15 H7 V-11" fill="none" stroke="#758393" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="-13" y="-9" width="25" height="18" rx="4" fill="#344456" stroke="#758393" stroke-width="1.5"/>
+    <path d="M12-8 L17-11 M12 8 L17 11" stroke="#758393" stroke-width="1.5" stroke-linecap="round"/>
+    <rect x="10" y="-7" width="4" height="14" rx="2" fill="#ffe9a1"/>
+    <path d="M-7-5 V5 M-3-5 V5" stroke="#758393" stroke-width="1" opacity=".65"/>
+  </g>
+</svg>

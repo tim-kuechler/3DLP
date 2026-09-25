@@ -249,9 +249,11 @@ body {
 }
 
 .publication-venue {
-    color: #555;
-    width: fit-content;
-    font-weight: bold;
+  display: block;
+  width: 440px;
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto;
 }
 
 .publication-awards {
