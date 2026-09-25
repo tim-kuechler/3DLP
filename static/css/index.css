@@ -193,7 +193,7 @@ body {
   gap: 0.45rem;
   justify-content: center;
   line-height: 1.3;
-  margin-top: 0.65rem;
+  margin: 0 0 0.8rem;
   padding: 0.25rem 0.75rem;
   position: relative;
   transition: background 160ms ease, border-color 160ms ease, color 160ms ease;
@@ -201,14 +201,14 @@ body {
 
 .title-answer-reveal-hint::before {
   background: inherit;
-  border-left: 1px solid;
-  border-top: 1px solid;
+  border-right: 1px solid;
+  border-bottom: 1px solid;
   border-color: inherit;
   content: "";
   height: 7px;
   left: 50%;
   position: absolute;
-  top: -4px;
+  bottom: -4px;
   transform: translateX(-50%) rotate(45deg);
   width: 7px;
 }
