@@ -183,21 +183,80 @@ body {
 
 .title-answer-reveal-hint {
   align-items: center;
-  color: #6b6b6b;
+  background: #f1f6fb;
+  border: 1px solid #d5e3ef;
+  border-radius: 999px;
+  color: #406b91;
   display: inline-flex;
   font-size: 0.9rem;
   font-weight: 600;
-  gap: 0.25rem;
+  gap: 0.45rem;
   justify-content: center;
-  margin-top: 0.55rem;
+  line-height: 1.3;
+  margin-top: 0.65rem;
+  padding: 0.25rem 0.75rem;
+  position: relative;
+  transition: background 160ms ease, border-color 160ms ease, color 160ms ease;
+}
+
+.title-answer-reveal-hint::before {
+  background: inherit;
+  border-left: 1px solid;
+  border-top: 1px solid;
+  border-color: inherit;
+  content: "";
+  height: 7px;
+  left: 50%;
+  position: absolute;
+  top: -4px;
+  transform: translateX(-50%) rotate(45deg);
+  width: 7px;
+}
+
+.title-answer-strip:hover .title-answer-hint-reveal,
+.title-answer-strip:focus-visible .title-answer-hint-reveal {
+  background: #e7f1fa;
+  border-color: #afc9e0;
+  color: #2c5c84;
 }
 
 .title-answer-reveal-hint .icon {
   height: 1em;
+  position: relative;
   width: 1em;
 }
 
+.title-answer-hint-reveal .icon::after {
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  content: "";
+  inset: -0.2rem;
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+  animation: reveal-click-cue 1.2s ease-out 0.8s 2;
+}
+
+@keyframes reveal-click-cue {
+  0% { opacity: 0; transform: scale(0.65); }
+  20% { opacity: 0.45; }
+  100% { opacity: 0; transform: scale(1.5); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .title-answer-hint-reveal .icon::after {
+    animation: none;
+  }
+
+  .title-answer-reveal-hint {
+    transition: none;
+  }
+}
+
 .title-answer-hint-reset {
+  background: #fafafa;
+  border-color: #e4e4e4;
+  color: #6b6b6b;
   display: none;
 }
 
