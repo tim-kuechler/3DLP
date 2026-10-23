@@ -1,0 +1,2 @@
+include requirements.txt environment.yml
+recursive-include docs *.md *.jpg *.svg
